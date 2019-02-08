@@ -9,7 +9,8 @@ module.exports = class MenuController {
           message: "Please choose from an option below: ",
           choices: [
             "Add new contact",
-            "Exit"
+            "Exit",
+            "Get Timestamp"
           ]
         }
       ];
@@ -18,23 +19,25 @@ module.exports = class MenuController {
 
     main(){
         console.log(`Welcome to AddressBloc!`);
-     inquirer.prompt(this.mainMenuQuestions).then((response) => {
-       switch(response.mainMenuChoice){
-         case "Add new contact":
-           this.addContact();
-           break;
-         case "Exit":
-           this.exit();
-         default:
-           console.log("Invalid input");
-           this.main();
-       }
-     })
-     .catch((err) => {
-       console.log(err);
-     });
+        inquirer.prompt(this.mainMenuQuestions).then((response) => {
+            switch(response.mainMenuChoice){
+                case "Add new contact":
+                    this.addContact();
+                    break;
+                case "Exit":
+                    this.exit();
+                    break;
+                case "Get Timestamp":
+                    this.getDate();
+                default:
+                    console.log("Invalid input");
+                    this.main();
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     }
-
     clear(){
         console.log("\x1Bc");
     }
@@ -42,9 +45,15 @@ module.exports = class MenuController {
         this.clear();
         console.log('addContact called');
         this.main();
-      }
-      exit(){
+    }
+    exit(){
         console.log("Thanks for using AddressBloc!");
         process.exit();
-      }
+    }
+    getDate(){
+        var today = new Date();
+        var date = (today.getMonth() + 1) +'/'+today.getDate()+'/'+today.getFullYear();
+        var time = today.getHours() + ':' + today.getMinutes();
+        console.log(date +' '+ time);
+    }
 }
