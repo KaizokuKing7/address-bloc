@@ -10,7 +10,7 @@ module.exports = class MenuController {
           choices: [
             "Add new contact",
             "Exit",
-            "Get Timestamp"
+            "Get date"
           ]
         }
       ];
@@ -27,8 +27,9 @@ module.exports = class MenuController {
                 case "Exit":
                     this.exit();
                     break;
-                case "Get Timestamp":
+                case "Get date":
                     this.getDate();
+                    break;
                 default:
                     console.log("Invalid input");
                     this.main();
@@ -51,9 +52,11 @@ module.exports = class MenuController {
         process.exit();
     }
     getDate(){
+        this.clear();
         var today = new Date();
         var date = (today.getMonth() + 1) +'/'+today.getDate()+'/'+today.getFullYear();
         var time = today.getHours() + ':' + today.getMinutes();
-        console.log(date +' '+ time);
+        console.log('The date is ' + date +' '+ time);
+        this.main();
     }
 }
