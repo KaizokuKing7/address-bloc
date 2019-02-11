@@ -30,7 +30,7 @@ module.exports = class MenuController {
            this.main();
        }
      })
-     .catch((err) => {
+    .catch((err) => {
        console.log(err);
      });
     }
@@ -42,9 +42,13 @@ module.exports = class MenuController {
         this.clear();
         console.log('addContact called');
         this.main();
-      }
-      exit(){
+    }
+    exit(){
         console.log("Thanks for using AddressBloc!");
         process.exit();
-      }
+    }
+    getContactCount(){
+        return this.contacts.length;
+    }
+
 }
