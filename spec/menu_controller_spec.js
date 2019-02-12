@@ -4,7 +4,9 @@ describe("MenuController", () => {
     beforeEach(() => {
         this.menu = new MenuController();
     });
-    
+    it("should return the remind me text", () =>{
+        expect(this.menu.remindMe()).toBe('Learning is a life-long pursuit');
+    })
     describe("#getContactCount()", () => {
  
  // #2
